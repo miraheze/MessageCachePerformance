@@ -37,11 +37,20 @@ class Hooks implements MessageCache__getHook, AfterFinalPageOutputHook {
 	 */
 	private array $skippedMessages = [];
 
+	private Config $config;
+
+	private LocalisationCache $localisationCache;
+
+	private MessageCachePerformanceMatcher $stringMatcher;
+
 	public function __construct(
-		private Config $config,
-		private LocalisationCache $localisationCache,
-		private MessageCachePerformanceMatcher $stringMatcher
+		Config $config,
+		LocalisationCache $localisationCache,
+		MessageCachePerformanceMatcher $stringMatcher
 	) {
+		$this->config = $config;
+		$this->localisationCache = $localisationCache;
+		$this->stringMatcher = $stringMatcher;
 	}
 
 	/**
