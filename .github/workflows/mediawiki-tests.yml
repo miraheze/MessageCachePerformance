@@ -2,9 +2,9 @@ name: Call reusable MediaWiki tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   call-mediawiki-tests-workflow:
@@ -12,33 +12,19 @@ jobs:
     strategy:
       matrix:
         include:
-          # Latest Old MediaWiki stable - PHP 7.4 
-          - mw: 'REL1_39'
-            php: 7.4
-            php-docker: 74
+          # Latest MediaWiki stable - PHP 8.1
+          - mw: 'REL1_41'
+            php: 8.1
+            php-docker: 81
             composer-test: true
             experimental: false
 
-          # Latest MediaWiki stable - PHP 7.4 
-          - mw: 'REL1_40'
-            php: 7.4
-            php-docker: 74
-            composer-test: true
-            experimental: false
-
-          # Latest MediaWiki master - PHP 7.4
+          # Latest MediaWiki master - PHP 8.1
           - mw: 'master'
-            php: 7.4
-            php-docker: 74
-            experimental: true
+            php: 8.1
+            php-docker: 81
             composer-test: false
-
-          # Latest MediaWiki master - PHP 8.2
-          - mw: 'master'
-            php: 8.2
-            php-docker: 82
             experimental: true
-            composer-test: false
 
     with:
       mw: ${{ matrix.mw }}
@@ -52,7 +38,7 @@ jobs:
   notify-irc:
     needs: call-mediawiki-tests-workflow
     runs-on: ubuntu-latest
-    if: ${{ always() && github.repository_owner == 'miraheze' && ( github.ref == 'refs/heads/main' || github.event_name == 'pull_request' ) }}
+    if: ${{ always() && github.repository_owner == 'miraheze' && ( github.ref == 'refs/heads/master' || github.event_name == 'pull_request' ) }}
     steps:
       - name: succeeded
         uses: technote-space/workflow-conclusion-action@v3
