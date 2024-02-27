@@ -92,7 +92,7 @@ class HooksTest extends TestCase {
 		}
 	}
 
-	public function matcherDataProvider() {
+	public static function matcherDataProvider() {
 		return [
 			'single key' => [ [ 'matched_key' ], [ 'matched_key' => false ] ],
 			'multiple keys' => [
