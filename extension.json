@@ -1,7 +1,11 @@
 {
 	"name": "MessageCachePerformance",
-	"author": "Fandom, Inc.",
-	"url": "https://github.com/Wikia/MessageCachePerformance",
+	"author": [
+		"Fandom, Inc.",
+		"Universal Omega",
+		"Paladox",
+	],
+	"url": "https://github.com/miraheze/MessageCachePerformance",
 	"description": "Avoid redundant MessageCache lookups",
 	"AutoloadNamespaces": {
 		"MessageCachePerformance\\": "src"
