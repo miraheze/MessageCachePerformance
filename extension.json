@@ -5,7 +5,7 @@
 		"Miraheze",
 		"Universal Omega",
 		"Paladox",
-	]
+	],
 	"url": "https://github.com/miraheze/MessageCachePerformance",
 	"description": "Avoid redundant MessageCache lookups",
 	"AutoloadNamespaces": {
